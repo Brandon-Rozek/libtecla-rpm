@@ -12,7 +12,10 @@ BuildRequires:  sed
 BuildRequires:  bash
 BuildRequires:  ncurses-devel
 
+# Add DESTDIR support for make install
 Patch0: libtecla-1.6.3-destdir.patch
+
+# Add build id support
 Patch1: libtecla-1.6.3-build-id.patch
 
 %description
