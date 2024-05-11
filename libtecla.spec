@@ -12,6 +12,8 @@ BuildRequires:  sed
 BuildRequires:  bash
 BuildRequires:  ncurses-devel
 
+Patch0: libtecla-1.6.3-destdir.patch
+Patch1: libtecla-1.6.3-build-id.patch
 
 %description
 The tecla library provides UNIX and LINUX programs with interactive command line
@@ -23,16 +25,12 @@ and in-line wild-card expansion of filenames.
 %prep
 %setup -q -n libtecla
 
+%patch -P 0 -p0
+%patch -P 1 -p0
+
 %build
 
-# Add support for DESTDIR
-sed -i '/LIBDIR=@libdir@/c\LIBDIR=$(DESTDIR)@libdir@' Makefile.in
-sed -i '/INCDIR=@includedir@/c\INCDIR=$(DESTDIR)@includedir@' Makefile.in
-sed -i '/MANDIR=@mandir@/c\MANDIR=$(DESTDIR)@mandir@' Makefile.in
-sed -i '/BINDIR=@bindir@/c\BINDIR=$(DESTDIR)@bindir@' Makefile.in
 
-# Include build-id when linking
-sed -i 's/$(LINK_SHARED)/$(LINK_SHARED) --build-id=sha1/' Makefile.rules
 
 %configure
 %make_build

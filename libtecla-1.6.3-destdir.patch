@@ -1,0 +1,17 @@
+--- Makefile.in.orig	2024-05-11 11:02:53.870007822 -0400
++++ Makefile.in	2024-05-11 11:07:15.817406853 -0400
+@@ -15,10 +15,10 @@
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-LIBDIR=@libdir@
+-INCDIR=@includedir@
+-MANDIR=@mandir@
+-BINDIR=@bindir@
++LIBDIR=$(DESTDIR)@libdir@
++INCDIR=$(DESTDIR)@includedir@
++MANDIR=$(DESTDIR)@mandir@
++BINDIR=$(DESTDIR)@bindir@
+ 
+ # Which C compiler do you want to use?
+ 

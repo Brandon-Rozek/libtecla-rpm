@@ -1,0 +1,11 @@
+--- Makefile.rules.orig	2024-05-11 11:13:51.642954167 -0400
++++ Makefile.rules	2024-05-11 11:14:52.351799976 -0400
+@@ -39,7 +39,7 @@
+ 
+ libtecla$(SUFFIX)$(SHARED_EXT): $(LIB_OBJECTS) $(srcdir)/libtecla.map \
+  libtecla.map.opt
+-	$(LINK_SHARED)
++	$(LINK_SHARED) --build-id=sha1
+ 	@endings="$(SHARED_ALT)" ; \
+ 	for alt in $$endings ; do \
+ 	  lnk="libtecla$(SUFFIX)$$alt"; \
